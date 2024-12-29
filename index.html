@@ -27,6 +27,11 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+    .choices button:active {
+      transform: scale(0.95);
+      background-color: #d0d0d0;
     }
     .result {
       margin-top: 20px;
@@ -57,15 +62,15 @@
     let streak = 0;
 
     const choices = {
-      dribble: 'ワンツー',
-      oneTwo: 'ロング',
-      long: 'ドリブル',
+      dribble: 'ドリブル',
+      oneTwo: 'ワンツー',
+      long: 'ロング',
     };
 
     const finalChoices = {
-      drive: 'グラウンダー',
-      grounder: 'ループ',
-      loop: 'ドライブ',
+      drive: 'ドライブ',
+      grounder: 'グラウンダー',
+      loop: 'ループ',
     };
 
     function playGame(playerChoice) {
