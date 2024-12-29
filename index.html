@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>じゃんけんサッカー</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .choices button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>じゃんけんサッカー</h1>
+    <p>連勝数: <span id="streak">0</span></p>
+    <div class="choices">
+      <h2>プレイを選んでください:</h2>
+      <button onclick="playGame('dribble')">ドリブル</button>
+      <button onclick="playGame('oneTwo')">ワンツー</button>
+      <button onclick="playGame('long')">ロング</button>
+    </div>
+    <div class="result" id="result"></div>
+    <div id="finalChoices" style="display: none;">
+      <h2>ゴールを狙う選択肢:</h2>
+      <button onclick="finalPlay('drive')">ドライブ</button>
+      <button onclick="finalPlay('grounder')">グラウンダー</button>
+      <button onclick="finalPlay('loop')">ループ</button>
+    </div>
+  </div>
+
+  <script>
+    let streak = 0;
+
+    const choices = {
+      dribble: 'ワンツー',
+      oneTwo: 'ロング',
+      long: 'ドリブル',
+    };
+
+    const finalChoices = {
+      drive: 'グラウンダー',
+      grounder: 'ループ',
+      loop: 'ドライブ',
+    };
+
+    function playGame(playerChoice) {
+      const computerChoice = Object.keys(choices)[Math.floor(Math.random() * 3)];
+      const resultDiv = document.getElementById('result');
+
+      if (choices[playerChoice] === computerChoice) {
+        streak++;
+        resultDiv.innerHTML = `あなたの${playerChoice}が成功しました！`;
+      } else {
+        streak = 0;
+        resultDiv.innerHTML = `あなたの${playerChoice}は阻まれました。`;
+      }
+
+      document.getElementById('streak').innerText = streak;
+
+      if (streak === 5) {
+        resultDiv.innerHTML += '<br>次はゴールを狙ってください！';
+        document.querySelector('.choices').style.display = 'none';
+        document.getElementById('finalChoices').style.display = 'block';
+      }
+    }
+
+    function finalPlay(playerChoice) {
+      const computerChoice = Object.keys(finalChoices)[Math.floor(Math.random() * 3)];
+      const resultDiv = document.getElementById('result');
+
+      if (finalChoices[playerChoice] === computerChoice) {
+        resultDiv.innerHTML = `ゴール成功！あなたの${playerChoice}が決まりました！`;
+      } else {
+        resultDiv.innerHTML = `ゴール失敗...あなたの${playerChoice}は阻まれました。`;
+      }
+
+      streak = 0;
+      document.getElementById('streak').innerText = streak;
+      document.querySelector('.choices').style.display = 'block';
+      document.getElementById('finalChoices').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
