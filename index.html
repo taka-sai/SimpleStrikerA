@@ -76,10 +76,8 @@
     function playGame(playerChoice) {
       const computerChoice = Object.keys(choices)[Math.floor(Math.random() * 3)];
       const resultDiv = document.getElementById('result');
-      console.log(choices[playerChoice]);
-      console.log(computerChoice);
 
-      if (choices[playerChoice] === computerChoice) {
+      if (choices[playerChoice] === choices[computerChoice]) {
         streak++;
         resultDiv.innerHTML = `あなたの${playerChoice}が成功しました！`;
       } else {
@@ -100,7 +98,7 @@
       const computerChoice = Object.keys(finalChoices)[Math.floor(Math.random() * 3)];
       const resultDiv = document.getElementById('result');
 
-      if (finalChoices[playerChoice] === computerChoice) {
+      if (finalChoices[playerChoice] === finalChoices[computerChoice]) {
         resultDiv.innerHTML = `ゴール成功！あなたの${playerChoice}が決まりました！`;
       } else {
         resultDiv.innerHTML = `ゴール失敗...あなたの${playerChoice}は阻まれました。`;
