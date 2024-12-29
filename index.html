@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>じゃんけんサッカー</title>
+  <title>シンプルストライカーA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -79,10 +79,10 @@
 
       if (choices[playerChoice] === choices[computerChoice]) {
         streak++;
-        resultDiv.innerHTML = `あなたの${playerChoice}が成功しました！`;
+        resultDiv.innerHTML = `あなたの${choices[playerChoice]}が成功しました！`;
       } else {
         streak = 0;
-        resultDiv.innerHTML = `あなたの${playerChoice}は阻まれました。`;
+        resultDiv.innerHTML = `あなたの${choices[playerChoice]}は阻まれました。`;
       }
 
       document.getElementById('streak').innerText = streak;
@@ -99,9 +99,9 @@
       const resultDiv = document.getElementById('result');
 
       if (finalChoices[playerChoice] === finalChoices[computerChoice]) {
-        resultDiv.innerHTML = `ゴール成功！あなたの${playerChoice}が決まりました！`;
+        resultDiv.innerHTML = `ゴール成功！あなたの${finalChoices[playerChoice]}が決まりました！`;
       } else {
-        resultDiv.innerHTML = `ゴール失敗...あなたの${playerChoice}は阻まれました。`;
+        resultDiv.innerHTML = `ゴール失敗...あなたの${finalChoices[playerChoice]}は阻まれました。`;
       }
 
       streak = 0;
