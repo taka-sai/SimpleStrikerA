@@ -76,8 +76,8 @@
     function playGame(playerChoice) {
       const computerChoice = Object.keys(choices)[Math.floor(Math.random() * 3)];
       const resultDiv = document.getElementById('result');
-      console.Log(choices[playerChoice]);
-      console.Log(computerChoice);
+      console.log(choices[playerChoice]);
+      console.log(computerChoice);
 
       if (choices[playerChoice] === computerChoice) {
         streak++;
